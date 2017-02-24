@@ -1,0 +1,114 @@
+建立資料庫
+CREATE DATABASE IF NOT EXISTS project;
+
+CREATE TABLE IF NOT EXISTS booking( 
+hotel VARCHAR(100) NOT NULL ,
+address VARCHAR(400) NOT NULL ,
+photo VARCHAR(400),
+url text ,
+special_price VARCHAR(20) NOT NULL ,
+original_price VARCHAR(20),
+longitude Decimal(30,10) NOT NULL,
+latitude Decimal(30,10) NOT NULL,
+insertdate datetime NOT NULL,
+PRIMARY KEY (Hotel),
+UNIQUE KEY (Address,photo)
+);
+
+CREATE TABLE IF NOT EXISTS history( 
+Hotel VARCHAR(100) ,
+Address VARCHAR(400) ,
+Photo VARCHAR(400),
+Url text ,
+Special_price VARCHAR(20)  ,
+Original_price VARCHAR(20),
+longitude Decimal(30,10) ,
+latitude Decimal(30,10) ,
+Insertdate datetime 
+);
+
+
+CREATE TABLE IF NOT EXISTS analysisData( 
+hotel VARCHAR(100) ,
+city VARCHAR(10) ,
+local_city VARCHAR(10) , 
+address VARCHAR(400)  ,
+longitude Decimal(30,10) ,
+latitude Decimal(30,10) ,
+wordcount Decimal(30,10) ,
+total_Ranking Decimal(30,10),
+city_Ranking Decimal(30,10),
+accommLevel Decimal(30,10),
+countyCity Decimal(30,10),
+Expense Decimal(30,10),
+Hardware Decimal(30,10),
+insideRoom Decimal(30,10),
+meal Decimal(30,10),
+staff Decimal(30,10),
+transportation Decimal(30,10),
+Venue Decimal(30,10),
+sum Decimal(30,10)
+); 
+
+
+CREATE TABLE IF NOT EXISTS analysisData( 
+hotel VARCHAR(100) ,
+city VARCHAR(10) ,
+local_city VARCHAR(10) , 
+address VARCHAR(400)  ,
+longitude Decimal(30,10) ,
+latitude Decimal(30,10) ,
+wordcount Decimal(30,10) ,
+total_Ranking Decimal(30,10),
+city_Ranking Decimal(30,10),
+accommLevel Decimal(30,10),
+countyCity Decimal(30,10),
+Expense Decimal(30,10),
+Hardware Decimal(30,10),
+insideRoom Decimal(30,10),
+meal Decimal(30,10),
+staff Decimal(30,10),
+transportation Decimal(30,10),
+Venue Decimal(30,10),
+sum Decimal(30,10),
+kmeans Decimal(30,10)
+); 
+
+
+
+CREATE TABLE IF NOT EXISTS landscape(
+landscape_id INT AUTO_INCREMENT,
+landscapeName VARCHAR(100) NOT NULL , 
+address VARCHAR(400)  NOT NULL,
+longitude Decimal(30,10) NOT NULL,
+latitude Decimal(30,10) NOT NULL,
+PRIMARY KEY (landscape_id),
+UNIQUE KEY (landscapeName)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS landscapeNews(
+news_id INT AUTO_INCREMENT,
+title VARCHAR(100) NOT NULL , 
+url text,
+landscapeName VARCHAR(100) NOT NULL,
+PRIMARY KEY (news_id),
+FOREIGN KEY (landscapeName)
+REFERENCES landscape(landscapeName) 
+)ENGINE=InnoDB;
+
+
+
+
+select a.address,a.longitude,a.latitude
+  from booking a join analysisData b on a.longitude=b.longitude
+  order by a.address;
+
+
+
+landscapeName = ws.cell(row = record,column = 6).value 
+address = ws.cell(row = record,column = 11).value
+longitude = ws.cell(row = record,column = 23).value
+latitude = ws.cell(row = record,column = 24).value
+
+
