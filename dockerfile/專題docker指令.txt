@@ -1,0 +1,11 @@
+docker run -d -P -it --name container1 -v /home/yingcheng/crawler:/forMount myimage
+docker exec -it container1 python /forMount/booking.py
+
+##刪除全部container
+docker rm -f `docker ps -qa`
+
+##匯入docker image
+docker load < myimage.tar
+
+##crontab啟動
+sudo service crond start
