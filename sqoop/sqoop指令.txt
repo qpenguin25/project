@@ -1,0 +1,10 @@
+sqoop list-tables --connect jdbc:mysql://10.120.37.206/project -P --username root
+##從Master查詢MySQL資料表(show tables)##
+
+##從Master匯入MySQL資料表booking到hive
+sqoop import --connect "jdbc:mysql://10.120.37.206/project" --table history --username root -P -m 1 --hive-import --hive-table history --hive-database hadoop1
+##從Master匯入MySQL資料表booking到hbase
+sqoop import --connect "jdbc:mysql://10.120.37.206/project" --table booking --username root -P --hbase-row-key special_price --hbase-create-table --column-family booking --hbase-table hotel -m 1
+
+
+sqoop import --connect "jdbc:mysql://10.120.37.206/project" --table analysisData --username root -P -m 1
