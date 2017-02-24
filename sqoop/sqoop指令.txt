@@ -1,9 +1,9 @@
-sqoop list-tables --connect jdbc:mysql://10.120.37.206/project -P --username root
-##±qMaster¬d¸ßMySQL¸ê®Æªí(show tables)##
+ï»¿sqoop list-tables --connect jdbc:mysql://10.120.37.206/project -P --username root
+##å¾žMasteræŸ¥è©¢MySQLè³‡æ–™è¡¨(show tables)##
 
-##±qMaster¶×¤JMySQL¸ê®Æªíbooking¨ìhive
+##å¾žMasteråŒ¯å…¥MySQLè³‡æ–™è¡¨bookingåˆ°hive
 sqoop import --connect "jdbc:mysql://10.120.37.206/project" --table history --username root -P -m 1 --hive-import --hive-table history --hive-database hadoop1
-##±qMaster¶×¤JMySQL¸ê®Æªíbooking¨ìhbase
+##å¾žMasteråŒ¯å…¥MySQLè³‡æ–™è¡¨bookingåˆ°hbase
 sqoop import --connect "jdbc:mysql://10.120.37.206/project" --table booking --username root -P --hbase-row-key special_price --hbase-create-table --column-family booking --hbase-table hotel -m 1
 
 
